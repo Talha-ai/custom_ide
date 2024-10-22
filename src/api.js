@@ -19,18 +19,20 @@ export async function getBatchResults(tokens) {
 
 export function evaluateResults(testCases, results) {
   return results.map((result, index) => {
-    const actualOutput = result.stdout;
-    const input = testCases[index].input;
-    const expectedOutput = testCases[index].expectedOutput;
-    const status = actualOutput === expectedOutput ? 'Pass' : 'Fail';
+    const { expectedOutput } = testCases[index];
+    const actualOutput = result.stdout.trim();
+
+    const isPass = actualOutput === expectedOutput || actualOutput === expectedOutput.trim();
+
     return {
-      input,
-      actualOutput,
+      input: testCases[index].input,
       expectedOutput,
-      status,
+      actualOutput: result.stdout,
+      status: isPass ? 'Pass' : 'Fail',
     };
   });
-}
+};
+
 
 
 export function delay(ms) {
