@@ -68,7 +68,7 @@ const Output = ({ editorRef, language }) => {
   };
 
   return (
-    <Box w="50%">
+    <Box w={{ base: '100%', md: '50%' }}>
       <Text mb={2} fontSize="lg">
         Output
       </Text>
@@ -87,9 +87,10 @@ const Output = ({ editorRef, language }) => {
         border="1px solid"
         borderRadius={4}
         borderColor="#333"
+        overflowY="auto"
       >
         {output ? (
-          <Table variant="simple">
+          <Table variant="simple" size="sm">
             <Thead>
               <Tr>
                 <Th>Test Case</Th>
