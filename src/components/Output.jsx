@@ -28,10 +28,10 @@ const Output = ({ editorRef, language }) => {
   const { id } = LANGUAGE_VERSIONS.find((lang) => lang?.name === language);
 
   const testCases = [
-    { input: '2\n3\n', expectedOutput: '5\n' },
-    { input: '0\n0\n', expectedOutput: '0\n' },
-    { input: '-1\n1\n', expectedOutput: '0\n' },
-    { input: '10\n15\n', expectedOutput: '25\n' },
+    { input: '2\n3\n', expectedOutput: '5' },
+    { input: '0\n0\n', expectedOutput: '0' },
+    { input: '-1\n1\n', expectedOutput: '0' },
+    { input: '10\n15\n', expectedOutput: '25' },
   ];
 
   const runCode = async () => {
