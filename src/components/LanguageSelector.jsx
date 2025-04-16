@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import {
   Box,
   Button,
@@ -10,8 +11,6 @@ import {
 import { LANGUAGE_VERSIONS } from '../constants';
 
 const languages = LANGUAGE_VERSIONS;
-// console.log(LANGUAGE_VERSIONS.name.split(' '));
-
 const ACTIVE_COLOR = 'blue.400';
 
 const LanguageSelector = ({ language, onSelect }) => {
@@ -25,9 +24,17 @@ const LanguageSelector = ({ language, onSelect }) => {
         <MenuList bg="#110c1b" maxHeight="400px" overflowY="auto">
           {languages.map((lang) => (
             <MenuItem
-              key={lang.name}
-              color={lang.name === language ? ACTIVE_COLOR : ''}
-              bg={lang.name === language ? 'gray.900' : 'transparent'}
+              key={lang.id}
+              color={
+                lang.name.toLowerCase() === language.toLowerCase()
+                  ? ACTIVE_COLOR
+                  : ''
+              }
+              bg={
+                lang.name.toLowerCase() === language.toLowerCase()
+                  ? 'gray.900'
+                  : 'transparent'
+              }
               _hover={{
                 color: ACTIVE_COLOR,
                 bg: 'gray.900',
@@ -42,4 +49,5 @@ const LanguageSelector = ({ language, onSelect }) => {
     </Box>
   );
 };
+
 export default LanguageSelector;

@@ -29,9 +29,9 @@ export function evaluateResults(testCases, results) {
       expectedOutput,
       actualOutput: result.stdout,
       status: isPass ? 'Pass' : 'Fail',
-    };
+    }
   });
-};
+}
 
 
 

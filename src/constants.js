@@ -166,4 +166,72 @@ export const CODE_SNIPPETS = {
   python: `\ndef greet(name):\n\tprint("Hello, " + name + "!")\n\ngreet("Alex")\n`,
   java: `\npublic class HelloWorld {\n\tpublic static void main(String[] args) {\n\t\tSystem.out.println("Hello World");\n\t}\n}\n`,
   php: "<?php\n\n$name = 'Alex';\necho $name;\n",
+
+  "c (gcc 9.2.0)": `#include <stdio.h>\n\nint main() {\n\tchar name[] = "Alex";\n\tprintf("Hello, %s!\\n", name);\n\treturn 0;\n}`,
+
+  "c++ (gcc 9.2.0)": `#include <iostream>\n#include <string>\n\nint main() {\n\tstd::string name = "Alex";\n\tstd::cout << "Hello, " << name << "!" << std::endl;\n\treturn 0;\n}`,
+
+  "c# (mono 6.6.0.161)": `using System;\n\nclass Program\n{\n\tstatic void Main()\n\t{\n\t\tstring name = "Alex";\n\t\tConsole.WriteLine("Hello, " + name + "!");\n\t}\n}`,
+
+  "go (1.13.5)": `package main\n\nimport "fmt"\n\nfunc main() {\n\tname := "Alex"\n\tfmt.Printf("Hello, %s!\\n", name)\n}`,
+
+  "ruby (2.7.0)": `name = "Alex"\nputs "Hello, #{name}!"`,
+
+  "rust (1.40.0)": `fn main() {\n\tlet name = "Alex";\n\tprintln!("Hello, {}!", name);\n}`,
+
+  "swift": `let name = "Alex"\nprint("Hello, \\(name)!")`,
+
+  "kotlin (1.3.70)": `fun main() {\n\tval name = "Alex"\n\tprintln("Hello, $name!")\n}`,
+
+  "bash (5.0.0)": `#!/bin/bash\n\nname="Alex"\necho "Hello, $name!"`,
+
+  "sql": `SELECT 'Hello, Alex!' AS greeting;`,
+
+  "plain text": `Hello, Alex!`
+};
+
+export const LANGUAGE_TO_MONACO_MAP = {
+  // Direct mappings
+  "javascript": "javascript",
+  "typescript": "typescript",
+  "python": "python",
+  "java": "java",
+  "php": "php",
+  "c (gcc 9.2.0)": "c",
+  "c++ (gcc 9.2.0)": "cpp",
+  "c# (mono 6.6.0.161)": "csharp",
+  "go (1.13.5)": "go",
+  "ruby (2.7.0)": "ruby",
+  "rust (1.40.0)": "rust",
+  "swift": "swift",
+  "kotlin (1.3.70)": "kotlin",
+  "bash (5.0.0)": "shell",
+  "sql": "sql",
+  "plain text": "plaintext",
+
+  // Additional mappings for other languages
+  "assembly (nasm 2.14.02)": "asm",
+  "basic (fbc 1.07.1)": "vb",
+  "clojure (1.10.1)": "clojure",
+  "cobol (gnucobol 2.2)": "cobol",
+  "common lisp (sbcl 2.0.0)": "lisp",
+  "d (dmd 2.089.1)": "d",
+  "elixir (1.9.4)": "elixir",
+  "erlang (otp 22.2)": "erlang",
+  "executable": "plaintext",
+  "f# (.net core sdk 3.1.202)": "fsharp",
+  "fortran (gfortran 9.2.0)": "fortran",
+  "groovy (3.0.3)": "groovy",
+  "haskell (ghc 8.8.1)": "haskell",
+  "lua (5.3.5)": "lua",
+  "multi-file program": "plaintext",
+  "objective-c (clang 7.0.1)": "objective-c",
+  "ocaml (4.09.0)": "ocaml",
+  "octave (5.1.0)": "matlab",
+  "pascal (fpc 3.0.4)": "pascal",
+  "perl (5.28.1)": "perl",
+  "prolog (gnu prolog 1.4.5)": "prolog",
+  "r (4.0.0)": "r",
+  "scala (2.13.2)": "scala",
+  "visual basic.net (vbnc 0.0.0.5943)": "vb"
 };
