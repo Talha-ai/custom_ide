@@ -9,7 +9,7 @@ const CodeEditor = () => {
   const editorRef = useRef();
   const [value, setValue] = useState(CODE_SNIPPETS.python || '');
   const [language, setLanguage] = useState('python');
-  console.log(language);
+
   const onMount = (editor) => {
     editorRef.current = editor;
     editor.focus();
@@ -29,7 +29,6 @@ const CodeEditor = () => {
   };
 
   const onSelect = (selectedLanguage) => {
-    console.log(selectedLanguage);
     setLanguage(selectedLanguage);
     const lowercaseLang = selectedLanguage.toLowerCase();
     setValue(

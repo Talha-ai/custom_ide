@@ -1,20 +1,41 @@
 import axios from 'axios';
 
+const judge0Api = axios.create({
+  baseURL: 'https://judge0-ce.p.rapidapi.com',
+  headers: {
+    'x-rapidapi-host': 'judge0-ce.p.rapidapi.com',
+    'x-rapidapi-key': import.meta.env.VITE_RAPIDAPI_KEY,
+    'Content-Type': 'application/json'
+  }
+});
+
 export async function createBatchSubmission(userCode, testCases, id) {
-  const submissions = testCases.map(testCase => ({
-    language_id: id,
-    source_code: userCode,
-    stdin: testCase.input
-  }));
+  try {
+    const submissions = testCases.map(testCase => ({
+      language_id: id,
+      source_code: userCode,
+      stdin: testCase.input
+    }));
 
-  const response = await axios.post('https://judge.dcrypt.co.in/submissions/batch?base64_encoded=false&wait=false', { submissions });
-  return response.data.map(submission => submission.token);
+    const response = await judge0Api.post('/submissions/batch?base64_encoded=false&wait=false', {
+      submissions
+    });
+
+    return response.data.map(submission => submission.token);
+  } catch (error) {
+    console.error('Error creating batch submission:', error);
+    throw error;
+  }
 }
-
 export async function getBatchResults(tokens) {
-  const url = `https://judge.dcrypt.co.in/submissions/batch?tokens=${tokens.join()}&base64_encoded=false&fields=token,stdout,stderr,status_id`;
-  const response = await axios.get(url);
-  return response.data.submissions;
+  try {
+    const url = `/submissions/batch?tokens=${tokens.join()}&base64_encoded=false&fields=token,stdout,stderr,status_id`;
+    const response = await judge0Api.get(url);
+    return response.data.submissions;
+  } catch (error) {
+    console.error('Error getting batch results:', error);
+    throw error;
+  }
 }
 
 export function evaluateResults(testCases, results) {
